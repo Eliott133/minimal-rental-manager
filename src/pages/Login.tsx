@@ -11,7 +11,7 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e : React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -19,7 +19,7 @@ export function Login() {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
       toast.success('Welcome back!');
-      navigate('/dashboard');
+      navigate('/');
     } catch (error) {
       toast.error('Invalid credentials. Please try again.');
       console.error('Error:', error);
@@ -84,6 +84,12 @@ export function Login() {
                 </button>
               </div>
             </div>
+
+            <p className="text-sm text-gray-500 text-right mt-2">
+              <Link to="/forgot-password" className="text-indigo-600 hover:underline">
+                Forgot your password?
+              </Link>
+            </p>
 
             <button
               type="submit"
