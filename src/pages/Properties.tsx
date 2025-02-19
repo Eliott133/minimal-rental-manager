@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Building2, Search, SlidersHorizontal, PlusCircle } from 'lucide-react';
 import { PropertyCard } from '../components/PropertyCard';
 import { PropertyEditModal } from '../components/PropertyEditModal';
+import { SearchBar } from '../components/common/SearchBar';
 import { Property } from '../types';
 import { supabase } from '../lib/supabase';
 import toast from 'react-hot-toast';
@@ -134,16 +135,7 @@ export function Properties() {
       </div>
 
       <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
-          <input
-            type="text"
-            className="w-full pl-10 p-2 border rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Search properties..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} placeholder="Search properties..." />
         <div className="flex items-center gap-2">
           <SlidersHorizontal className="w-5 h-5 text-gray-400" />
           <select

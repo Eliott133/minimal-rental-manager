@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Users, Search, SlidersHorizontal, Mail, Phone, Calendar, Building2, Edit, PlusCircle, Trash2 } from 'lucide-react';
 import { Tenant } from '../types';
 import { TenantEditModal } from '../components/TenantEditModal';
+import { SearchBar } from '../components/common/SearchBar';
 import { supabase } from '../lib/supabase';
 import toast from 'react-hot-toast';
 
@@ -162,18 +163,7 @@ export function Tenants() {
 
 
       <div className="mt-8">
-        <div className="relative flex-grow mb-6">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Search className="h-5 w-5 text-gray-400" />
-          </div>
-          <input
-            type="text"
-            className="w-full pl-10 p-2 border rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
-            placeholder="Search tenants..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
+        <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} placeholder="Search tenants..." />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredTenants.map((tenant) => {
