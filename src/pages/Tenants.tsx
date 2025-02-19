@@ -142,7 +142,7 @@ export function Tenants() {
   }
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 py-8">
+    <div className="p-6 grid gap-6 bg-gray-100">
 
 
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-white rounded-xl shadow-md">
@@ -161,15 +161,14 @@ export function Tenants() {
         </button>
       </div>
 
-
-      <div className="mt-8">
         <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} placeholder="Search tenants..." />
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredTenants.map((tenant) => {
             const property = properties.find(p => p.id === tenant.property_id);
             return (
-              <div key={tenant.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={tenant.id} className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <div>
@@ -209,7 +208,6 @@ export function Tenants() {
             );
           })}
         </div>
-      </div>
 
       {selectedTenant && (
         <TenantEditModal

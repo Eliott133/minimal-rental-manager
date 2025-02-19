@@ -274,7 +274,7 @@ export function Documents() {
                   <button 
                     onClick={() => handleDeleteDocument(document)}
                     className="text-gray-400 hover:text-gray-500">
-                    <Trash2 className="h-5 w-5" />
+                    <Trash2 className="h-5 w-5 hover:text-red-500" />
                   </button>
                 </div>
               </div>
